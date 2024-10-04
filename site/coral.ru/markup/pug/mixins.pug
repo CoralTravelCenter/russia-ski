@@ -1,0 +1,37 @@
+mixin region-markup(data)
+	-const region = data
+	-const region_tabs = data.tabs 
+	picture.poster
+		source(media="(max-width: 768px)", srcset=region.poster_mobile_url)
+		img(src=region.poster_desktop_url)
+	.tabs
+		+tab-navigation(region_tabs)
+		.tabs__content
+			each item, idx in region_tabs
+				.content-panel(class=(idx > 0 ? 'js-hidden' : ''))
+					div
+						+tab-content(item)
+
+
+mixin tab-navigation(data)
+	.tabs__navigation 
+		each item, idx in data
+			button.tab-navigation-btn(class=(idx === 0 ? 'js-active' : ''))=item.region
+
+
+mixin tab-content(data)
+	h3=data.headline
+	p=data.text
+	picture.poster
+		source(media="(max-width: 768px)", srcset=data.poster_mobile_url)
+		img(src=data.poster_desktop_url)
+	h3=data.benefits_headline
+	+region-benefits(data.benefits)
+
+mixin region-benefits(data)
+	ul.benefits-list
+		each item in data
+			li.benefits-item
+				.icon
+					img(src=item.icon)
+				p=item.text

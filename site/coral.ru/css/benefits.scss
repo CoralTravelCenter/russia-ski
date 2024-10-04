@@ -1,0 +1,36 @@
+@import '../../common/css/_regular-mixins.scss';
+@import '../../common/css/coral/_coral-fluid-mixins.scss';
+
+section.benefits > article .contenu {
+	.benefits-container {
+		@include flex-grid(1.5em, 3, center);
+
+		.benefit {
+			border-radius: 20px;
+			@include property(padding, 18px);
+			background: var(--CORAL-white, #fff);
+			box-shadow: 0px 6px 16px 0px rgba(0, 0, 0, 0.08),
+				0px 3px 6px -4px rgba(0, 0, 0, 0.12),
+				0px 9px 28px 8px rgba(0, 0, 0, 0.05);
+
+			display: flex;
+			align-items: center;
+			flex-direction: column;
+			justify-content: center;
+			gap: 1.5em;
+
+			.icon {
+				@include property(width, 100px);
+				@include property(height, 100px);
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				flex-shrink: 0;
+
+				> img {
+					object-fit: contain;
+				}
+			}
+		}
+	}
+}

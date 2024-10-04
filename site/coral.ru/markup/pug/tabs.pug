@@ -1,0 +1,13 @@
+include ./mixins
+
+link(href='../../css/tabs.scss' rel='stylesheet' type='text/css')
+section.hero.regions-section
+	article.full-width
+		.contenu
+			ul.regions-list
+				each region, idx in regions
+					li.region-item
+						div 
+							+region-markup(region)
+
+
