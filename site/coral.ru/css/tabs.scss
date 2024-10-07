@@ -16,14 +16,6 @@ section.regions-section {
 		display: none;
 	}
 
-	> article.full-width {
-		max-width: unset;
-		width: 100vw;
-		transform: translateX(-50%);
-		left: 50%;
-		position: relative;
-	}
-
 	> article .contenu {
 		picture.poster {
 			border-radius: 20px;
@@ -36,14 +28,13 @@ section.regions-section {
 
 		.regions-list {
 			list-style: none;
+			margin: 0;
+			display: flex;
+			flex-direction: column;
+			gap: 1.5em;
 
-			.region-item:nth-child(odd) {
-				background: red;
-
-				> div {
-					max-width: 1530px;
-					padding: 0px 80px;
-				}
+			.region-item {
+				position: relative;
 			}
 		}
 
@@ -115,6 +106,29 @@ section.regions-section {
 							img {
 								object-fit: contain;
 							}
+						}
+					}
+				}
+
+				ul.card-grid {
+					--elements: 3;
+					list-style: none;
+					margin: 0;
+					@include flex-grid(1em, var(--elements), center);
+
+					.card-item {
+						display: flex;
+						flex-direction: column;
+
+						.picture {
+							border-radius: 1.25em;
+							overflow: hidden;
+							min-height: 240px;
+							margin-bottom: 1.5em;
+						}
+
+						h3 {
+							margin-bottom: 14px;
 						}
 					}
 				}

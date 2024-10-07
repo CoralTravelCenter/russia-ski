@@ -1,16 +1,21 @@
 mixin region-markup(data)
 	-const region = data
-	-const region_tabs = data.tabs 
+	-const region_tabs = region.tabs 
 	picture.poster
 		source(media="(max-width: 768px)", srcset=region.poster_mobile_url)
 		img(src=region.poster_desktop_url)
-	.tabs
-		+tab-navigation(region_tabs)
-		.tabs__content
-			each item, idx in region_tabs
-				.content-panel(class=(idx > 0 ? 'js-hidden' : ''))
-					div
-						+tab-content(item)
+	
+	if region_tabs !== undefined
+		.tabs
+			+tab-navigation(region_tabs)
+			.tabs__content
+				each item, idx in region_tabs
+					.content-panel(class=(idx > 0 ? 'js-hidden' : ''))
+						div
+							+tab-content(item)
+	else 
+		+tab-content(region)
+	
 
 
 mixin tab-navigation(data)
@@ -22,9 +27,12 @@ mixin tab-navigation(data)
 mixin tab-content(data)
 	h3=data.headline
 	p=data.text
-	picture.poster
-		source(media="(max-width: 768px)", srcset=data.poster_mobile_url)
-		img(src=data.poster_desktop_url)
+	if (data.poster_desktop_url)
+		picture.poster
+			source(media="(max-width: 768px)", srcset=data.poster_mobile_url)
+			img(src=data.poster_desktop_url)
+	if (data.card_grid)
+		+card-grid(data.card_grid)
 	h3=data.benefits_headline
 	+region-benefits(data.benefits)
 
@@ -35,3 +43,13 @@ mixin region-benefits(data)
 				.icon
 					img(src=item.icon)
 				p=item.text
+
+mixin card-grid(data)
+	ul.card-grid 
+		each item in data
+			li.card-item
+				.picture
+					img(src=item.img)
+				h3=item.headline
+				p=item.text
+

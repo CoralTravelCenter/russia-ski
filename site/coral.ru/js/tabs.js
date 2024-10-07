@@ -1,21 +1,40 @@
 import { hostReactAppReady } from '../../common/js/utils'
 
 hostReactAppReady().then(() => {
-	const TABS_NAVIGATION = document.querySelectorAll('.tab-navigation-btn')
-	const TABS_CONTENT = document.querySelectorAll('.content-panel')
+	class CoralTabs {
+		constructor(region) {
+			this.tabsNavigationButtons = region.querySelectorAll(
+				'.tab-navigation-btn'
+			)
+			this.contentPanels = region.querySelectorAll('.content-panel')
+			this.tabHandler()
+		}
 
-	const onTabNavigationButtonClick = (e, idx) => {
-		TABS_NAVIGATION.forEach(btn => {
-			btn.classList.remove('js-active')
-		})
-		TABS_CONTENT.forEach(panel => {
-			panel.classList.add('js-hidden')
-		})
-		e.target.classList.add('js-active')
-		TABS_CONTENT[idx].classList.remove('js-hidden')
+		tabHandler() {
+			const onTabNavigationButtonClick = (e, idx) => {
+				this.tabsNavigationButtons.forEach(btn => {
+					btn.classList.remove('js-active')
+				})
+				this.contentPanels.forEach(panel => {
+					panel.classList.add('js-hidden')
+				})
+				e.target.classList.add('js-active')
+				this.contentPanels[idx].classList.remove('js-hidden')
+			}
+
+			this.tabsNavigationButtons.forEach((btn, idx) => {
+				btn.addEventListener('click', e => onTabNavigationButtonClick(e, idx))
+			})
+		}
 	}
 
-	TABS_NAVIGATION.forEach((btn, idx) => {
-		btn.addEventListener('click', e => onTabNavigationButtonClick(e, idx))
+	document.querySelectorAll('[data-region]').forEach(el => {
+		return new CoralTabs(el)
+	})
+
+	const cardGrid = document.querySelectorAll('ul.card-grid')
+	cardGrid.forEach(el => {
+		const cardItems = el.querySelectorAll('ul.card-grid li')
+		el.style.setProperty('--elements', cardItems.length)
 	})
 })

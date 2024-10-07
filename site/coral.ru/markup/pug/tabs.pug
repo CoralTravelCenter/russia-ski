@@ -2,12 +2,12 @@ include ./mixins
 
 link(href='../../css/tabs.scss' rel='stylesheet' type='text/css')
 section.hero.regions-section
-	article.full-width
+	article
 		.contenu
 			ul.regions-list
 				each region, idx in regions
-					li.region-item
+					li.region-item(data-region = idx)
 						div 
 							+region-markup(region)
-
+script(type='module' src='../../js/tabs.js')
 
