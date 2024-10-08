@@ -4,7 +4,7 @@ mixin region-markup(data)
 	picture.poster
 		source(media="(max-width: 768px)", srcset=region.poster_mobile_url)
 		img(src=region.poster_desktop_url)
-	
+
 	if region_tabs !== undefined
 		.tabs
 			+tab-navigation(region_tabs)
@@ -14,8 +14,8 @@ mixin region-markup(data)
 						div
 							+tab-content(item)
 	else 
-		+tab-content(region)
-	
+		+content(region)
+
 
 
 mixin tab-navigation(data)
@@ -31,6 +31,14 @@ mixin tab-content(data)
 		picture.poster
 			source(media="(max-width: 768px)", srcset=data.poster_mobile_url)
 			img(src=data.poster_desktop_url)
+	if (data.card_grid)
+		+card-grid(data.card_grid)
+	h3=data.benefits_headline
+	+region-benefits(data.benefits)
+
+mixin content(data)
+	h3=data.headline
+	p=data.text
 	if (data.card_grid)
 		+card-grid(data.card_grid)
 	h3=data.benefits_headline

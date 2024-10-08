@@ -19,6 +19,11 @@ hostReactAppReady().then(() => {
 					panel.classList.add('js-hidden')
 				})
 				e.target.classList.add('js-active')
+				e.target.scrollIntoView({
+					behavior: 'smooth',
+					block: 'nearest',
+					inline: 'start',
+				})
 				this.contentPanels[idx].classList.remove('js-hidden')
 			}
 

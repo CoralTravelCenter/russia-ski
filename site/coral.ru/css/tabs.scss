@@ -18,11 +18,10 @@ section.regions-section {
 
 	> article .contenu {
 		picture.poster {
-			border-radius: 20px;
-			overflow: hidden;
-
-			img {
+			> img {
 				display: block;
+				@include rounded-corners-overflow-fix;
+				border-radius: 20px;
 			}
 		}
 
@@ -53,6 +52,9 @@ section.regions-section {
 				overflow-x: scroll;
 				padding: 8px;
 				scroll-snap-type: x mandatory;
+				justify-content: start;
+
+				@include hideScrollBar;
 			}
 
 			.tab-navigation-btn {
@@ -64,11 +66,10 @@ section.regions-section {
 				border-radius: 16px;
 				transition: all 500ms ease;
 				flex: 1;
-
 				scroll-snap-align: start;
 
 				@media (max-width: 768px) {
-					font-size: 1.25em;
+					min-width: 200px;
 				}
 
 				@include fontAndProperty(16px, padding-block, 12px);
@@ -94,6 +95,10 @@ section.regions-section {
 
 				ul.benefits-list {
 					@include flex-grid(1em, 5, center);
+
+					@media (max-width: 768px) {
+						@include flex-grid(1em, 1, center);
+					}
 					.benefits-item {
 						display: flex;
 						gap: 1em;
@@ -109,33 +114,68 @@ section.regions-section {
 						}
 					}
 				}
-
-				ul.card-grid {
-					--elements: 3;
-					list-style: none;
-					margin: 0;
-					@include flex-grid(1em, var(--elements), center);
-
-					.card-item {
-						display: flex;
-						flex-direction: column;
-
-						.picture {
-							border-radius: 1.25em;
-							overflow: hidden;
-							min-height: 240px;
-							margin-bottom: 1.5em;
-						}
-
-						h3 {
-							margin-bottom: 14px;
-						}
-					}
-				}
 			}
 
 			.content-panel.js-hidden {
 				display: none;
+			}
+		}
+
+		ul.card-grid {
+			--elements: 3;
+			list-style: none;
+			margin: 0;
+			@include flex-grid(1em, var(--elements), center);
+
+			@media (max-width: 768px) {
+				@include flex-grid(1em, 1, center);
+			}
+
+			.card-item {
+				display: flex;
+				flex-direction: column;
+
+				.picture {
+					border-radius: 1.25em;
+					overflow: hidden;
+					min-height: 240px;
+					margin-bottom: 1.5em;
+				}
+
+				h3 {
+					margin-bottom: 14px;
+				}
+			}
+		}
+	}
+}
+
+[data-region='2'] {
+	> div {
+		display: flex;
+		flex-direction: column;
+		gap: 1.5em;
+
+		ul.benefits-list {
+			@include flex-grid(1em, 5, center);
+
+			@media (max-width: 768px) {
+				@include flex-grid(1em, 1, center);
+			}
+
+			.benefits-item {
+				display: flex;
+				gap: 1em;
+				align-items: center;
+				.icon {
+					flex-shrink: 0;
+					@include property(width, 64px);
+					@include property(height, 64px);
+
+					img {
+						object-fit: contain;
+					}
+				}
 			}
 		}
 	}

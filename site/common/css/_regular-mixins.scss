@@ -1,6 +1,6 @@
-@use "sass:math";
-@use "sass:selector";
-@import "global-variables";
+@use 'sass:math';
+@use 'sass:selector';
+@import 'global-variables';
 
 /*
 Миксин для создания адаптивной сетки на флексах:
@@ -38,7 +38,7 @@ $FZ - шрифт в px
 
 @mixin ruble {
 	&::after {
-		content: "₽";
+		content: '₽';
 		margin-left: 5px;
 	}
 }
@@ -76,4 +76,19 @@ $child - задаем тег, для которого хотим повысит�
 	@at-root #{selector.unify(&, $child)} {
 		@content;
 	}
+}
+@mixin hideScrollBar {
+	scrollbar-width: none;
+
+	/* Скрываем скроллбар */
+	&::-webkit-scrollbar {
+		display: none; /* Chrome, Safari, Opera */
+	}
+
+	/* Скрываем скроллбар для IE, Edge */
+	-ms-overflow-style: none;
+
+	/* Стиль для предотвращения появления пустого пространства */
+	-webkit-overflow-scrolling: touch; /* Для iOS */
+	overflow-y: auto; /* Для всех браузеров */
 }

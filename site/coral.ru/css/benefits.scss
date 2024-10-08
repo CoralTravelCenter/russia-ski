@@ -5,6 +5,10 @@ section.benefits > article .contenu {
 	.benefits-container {
 		@include flex-grid(1.5em, 3, center);
 
+		@media (max-width: 768px) {
+			@include flex-grid(1.5em, 1, center);
+		}
+
 		.benefit {
 			border-radius: 20px;
 			@include property(padding, 18px);

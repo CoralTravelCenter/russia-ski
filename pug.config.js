@@ -86,7 +86,7 @@ module.exports = {
 						headline: 'Катаемся с ноября по май',
 						text: 'Горнолыжный комплекс расположен на высоте примерно 1650 м. Курорт компактный: от отеля до подъемника можно дойти за пару минут. На Домбае есть трассы для новичков и профи. Основные зоны катания расположены на горе Мусса-Ачитара. Для фрирайдеров есть несколько маршрутов на северной стороне горы. Также есть программы хели-ски.',
 						poster_desktop_url: '/site/coral.ru/assets/dombai.webp',
-						poster_mobile_url: '/site/coral.ru/assets/zima-dombai-mobile.webp',
+						poster_mobile_url: '/site/coral.ru/assets/dombai-mob.webp',
 						benefits_headline: 'Apres ski',
 						benefits: [
 							{
@@ -156,8 +156,7 @@ module.exports = {
 						headline: 'Катаемся с ноября по май',
 						text: 'Один из популярных горнолыжных курортов России. Здесь 26 горнолыжных трасс с протяженностью около 56 км. Главная особенность – пушистый снег, структура которого делает катание безопасным и комфортным, а также исключает схода лавин. Курорт привлекает большим количеством спусков разной сложности, поэтому сюда приезжают кататься лыжники и сноубордисты разного уровню подготовки.',
 						poster_desktop_url: '/site/coral.ru/assets/sheregesh.webp',
-						poster_mobile_url:
-							'/site/coral.ru/assets/zima-sheregesh-mobile.webp',
+						poster_mobile_url: '/site/coral.ru/assets/sheregesh-mob.webp',
 						benefits_headline: 'Apres ski',
 						benefits: [
 							{
@@ -269,7 +268,7 @@ module.exports = {
 						headline: 'Катаемся с ноября по май',
 						text: 'Горнолыжный комплекс расположен на высоте примерно 1650 м. Курорт компактный: от отеля до подъемника можно дойти за пару минут. На Домбае есть трассы для новичков и профи. Основные зоны катания расположены на горе Мусса-Ачитара. Для фрирайдеров есть несколько маршрутов на северной стороне горы. Также есть программы хели-ски.',
 						poster_desktop_url: '/site/coral.ru/assets/azerbai.webp',
-						poster_mobile_url: '/site/coral.ru/assets/zima-dombai-mobile.webp',
+						poster_mobile_url: '/site/coral.ru/assets/azerbai-mob.webp',
 						benefits_headline: 'Apres ski',
 						benefits: [
 							{
@@ -301,7 +300,7 @@ module.exports = {
 				headline: 'Катаемся с ноября по конец апреля',
 				text: 'Страна, защищенная от ветров Кавказскими горами, привлекает туристов со всего мира своим мягким климатом и солнечными горнолыжными склонами. Трассы на курортах подходят как для новичков, так и для опытных лыжников. Для экстремалов есть возможности для фрирайда и хели-ски. У всех горнолыжных курортов современные трассы и подъемники.',
 				poster_desktop_url: '/site/coral.ru/assets/georgia-banner.webp',
-				poster_mobile_url: '#',
+				poster_mobile_url: '/site/coral.ru/assets/georgia-banner-mob.webp',
 				card_grid: [
 					{
 						img: '/site/coral.ru/assets/chigman.webp',
