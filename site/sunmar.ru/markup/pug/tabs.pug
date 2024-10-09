@@ -1,0 +1,10 @@
+include ./mixins
+
+link(href='../../css/tabs.scss' rel='stylesheet' type='text/css')
+section.hero.regions-section
+  article
+    .contenu
+      -const sunmar_regions = sunmar.regions;
+      +content(sunmar_regions)
+script(src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js")      
+script(type="module" src='../../js/tabs.js')

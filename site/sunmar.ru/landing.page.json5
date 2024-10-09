@@ -2,12 +2,13 @@
 	env: {
 		brand: 'sunmar-next',
 		cmsWidgetContainer: '<div>{{{ widget_markup }}}</div>',
-		cdnAssetsURL: '//b2ccdn.sunmar.ru/content/landing-pages/<название корневой папки>',
+		cdnAssetsURL: '//b2ccdn.sunmar.ru/content/landing-pages/russia-ski',
 	},
 	contents: [
 		'/site/sunmar.ru/markup/global.html',
 		'/site/sunmar.ru/markup/main.html',
 		'/site/sunmar.ru/markup/hero-text.html',
-		'/site/sunmar.ru/markup/contacts.html',
+		'/site/sunmar.ru/markup/benefits.html',
+		'/site/sunmar.ru/markup/pug/tabs.pug',
 	],
 }

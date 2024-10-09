@@ -5,7 +5,8 @@ section.hero.regions-section
 	article
 		.contenu
 			ul.regions-list
-				each region, idx in regions
+				-const coral_regions = coral.regions;
+				each region, idx in coral_regions
 					li.region-item(data-region = idx)
 						div 
 							+region-markup(region)

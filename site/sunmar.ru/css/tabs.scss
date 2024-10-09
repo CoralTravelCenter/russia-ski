@@ -1,0 +1,151 @@
+@import '../../common/css/coral/_coral-fluid-mixins.scss';
+@import '../../common/css/_regular-mixins.scss';
+
+@keyframes showTab {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
+}
+
+swiper-container {
+	overflow: hidden;
+	width: 100%;
+
+	swiper-slide {
+		span.location {
+		}
+		picture.poster {
+			position: relative;
+		}
+	}
+}
+
+section.regions-section {
+	br {
+		display: none;
+	}
+
+	> article .contenu {
+		@include property(gap, 32px);
+
+		.regions-list {
+			list-style: none;
+			margin: 0;
+			display: flex;
+			flex-direction: column;
+			gap: 1.5em;
+
+			.region-item {
+				position: relative;
+			}
+		}
+
+		.tabs {
+			margin: 0;
+			display: flex;
+			flex-direction: column;
+			gap: 2em;
+			&__navigation {
+				display: flex;
+				margin-bottom: 1.5em;
+				width: 50%;
+				@include property(border-radius, 56px);
+				margin: 0 auto;
+				overflow-x: scroll;
+				scroll-snap-type: x mandatory;
+				justify-content: center;
+				box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+				@include hideScrollBar;
+
+				.tab-navigation-btn {
+					border: none;
+					font-size: 0.8em;
+					color: #000;
+					cursor: pointer;
+					background: transparent;
+					transition: all 500ms ease;
+					width: fit-content;
+					scroll-snap-align: start;
+					flex: 1;
+					@include fontAndProperty(16px, padding-block, 12px);
+					@include fontAndProperty(16px, padding-inline, 24px);
+				}
+
+				.tab-navigation-btn.js-active {
+					background: #21366a;
+					color: #fff;
+				}
+			}
+
+			.content-panel {
+				display: flex;
+				flex-direction: column;
+				gap: 1.5em;
+
+				> div {
+					display: flex;
+					flex-direction: column;
+					gap: 1.5em;
+					animation: showTab 500ms ease-in-out;
+				}
+
+				ul.benefits-list {
+					@include flex-grid(1em, 5, center);
+
+					@media (max-width: 768px) {
+						@include flex-grid(1em, 1, center);
+					}
+					.benefits-item {
+						display: flex;
+						gap: 1em;
+						align-items: center;
+						.icon {
+							flex-shrink: 0;
+							@include property(width, 64px);
+							@include property(height, 64px);
+
+							img {
+								object-fit: contain;
+							}
+						}
+					}
+				}
+			}
+
+			.content-panel.js-hidden {
+				display: none;
+			}
+		}
+
+		ul.card-grid {
+			--elements: 3;
+			list-style: none;
+			margin: 0;
+			@include flex-grid(1em, var(--elements), center);
+
+			@media (max-width: 768px) {
+				@include flex-grid(1em, 1, center);
+			}
+
+			.card-item {
+				display: flex;
+				flex-direction: column;
+
+				.picture {
+					border-radius: 1.25em;
+					overflow: hidden;
+					min-height: 240px;
+					margin-bottom: 1.5em;
+				}
+
+				h3 {
+					margin-bottom: 14px;
+				}
+			}
+		}
+	}
+}

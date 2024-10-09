@@ -2,7 +2,7 @@
 	env: {
 		brand: 'coral-next',
 		cmsWidgetContainer: '<div>{{{ widget_markup }}}</div>',
-		cdnAssetsURL: '//b2ccdn.coral.ru/content/landing-pages/gornolygka',
+		cdnAssetsURL: '//b2ccdn.coral.ru/content/landing-pages/ski-resorts',
 	},
 	contents: [
 		'/site/coral.ru/markup/global.html',

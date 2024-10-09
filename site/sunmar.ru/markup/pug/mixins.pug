@@ -1,0 +1,29 @@
+mixin tab-navigation(data)
+	.tabs__navigation
+		each item, idx in data
+			button.tab-navigation-btn(class=(idx === 0 ? 'js-active' : ''))=item.region_name
+
+
+mixin tab-content(data)
+	if (data.slider)
+		-const slider = data.slider;
+		swiper-container
+			each slide in slider
+				swiper-slide
+					span.location=slide.location
+					picture.poster
+						source(media="(max-width: 768px)" width="356" height="260" srcset="#")
+						img(width="1360" height="300" src='#')
+					
+
+
+mixin content(data)
+	-const tabs = data;
+	h2='Где покататься на лыжах и сноубордах новичкам и профи'
+	.tabs
+		+tab-navigation(tabs)
+		.tabs__content
+			each tab, idx in tabs
+				.content-panel(class=(idx > 0 ? 'js-hidden' : ''))
+					div
+						+tab-content(tab)

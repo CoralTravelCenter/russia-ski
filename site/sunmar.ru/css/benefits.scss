@@ -1,0 +1,30 @@
+@import '../../common/css/_regular-mixins.scss';
+@import '../../common/css/coral/_coral-fluid-mixins.scss';
+
+section.benefits > article .contenu {
+	.benefits-wrapper {
+		@include flex-grid(1em, 6, center);
+
+		@media (max-width: 768px) {
+			@include flex-grid(1em, 1, center);
+		}
+
+		.benefit {
+			display: flex;
+			flex-direction: column;
+			gap: 1em;
+			align-items: center;
+			justify-content: space-between;
+
+			.icon {
+				@include property(width, 140px);
+				aspect-ratio: 1;
+
+				> img {
+					display: block;
+					object-fit: contain;
+				}
+			}
+		}
+	}
+}
