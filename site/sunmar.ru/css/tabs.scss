@@ -11,19 +11,6 @@
 	}
 }
 
-swiper-container {
-	overflow: hidden;
-	width: 100%;
-
-	swiper-slide {
-		span.location {
-		}
-		picture.poster {
-			position: relative;
-		}
-	}
-}
-
 section.regions-section {
 	br {
 		display: none;
@@ -61,6 +48,14 @@ section.regions-section {
 				box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 				@include hideScrollBar;
 
+				@media (max-width: 768px) {
+					width: 100%;
+					gap: 1em;
+					background: transparent;
+					border-radius: 0;
+					box-shadow: none;
+				}
+
 				.tab-navigation-btn {
 					border: none;
 					font-size: 0.8em;
@@ -73,6 +68,11 @@ section.regions-section {
 					flex: 1;
 					@include fontAndProperty(16px, padding-block, 12px);
 					@include fontAndProperty(16px, padding-inline, 24px);
+
+					@media (max-width: 768px) {
+						background: #fff;
+						@include property(border-radius, 56px);
+					}
 				}
 
 				.tab-navigation-btn.js-active {
@@ -90,6 +90,7 @@ section.regions-section {
 					display: flex;
 					flex-direction: column;
 					gap: 1.5em;
+					position: relative;
 					animation: showTab 500ms ease-in-out;
 				}
 
@@ -136,9 +137,9 @@ section.regions-section {
 				flex-direction: column;
 
 				.picture {
-					border-radius: 1.25em;
+					border-radius: 12px;
 					overflow: hidden;
-					min-height: 240px;
+					height: 300px;
 					margin-bottom: 1.5em;
 				}
 
@@ -148,4 +149,181 @@ section.regions-section {
 			}
 		}
 	}
+}
+
+swiper-container {
+	overflow: hidden;
+	width: 100%;
+	border-radius: 8px;
+	position: relative;
+}
+
+swiper-container::part(pagination) {
+	top: 310px !important;
+	height: fit-content;
+	display: flex;
+	justify-content: center;
+	gap: 8px;
+}
+
+swiper-container::part(bullet) {
+	width: 10px;
+	height: 10px;
+	opacity: 0.5;
+	background: var(--Base-color_Base_Icon, #0e2855);
+}
+
+swiper-container::part(bullet-active) {
+	width: 10px;
+	height: 10px;
+	opacity: 1;
+	background: var(--Base-color_Base_Icon, #0e2855);
+	position: relative;
+
+	&::after {
+		content: '';
+		width: 16px;
+		height: 16px;
+		display: block;
+		border: 2px solid #21366a;
+		border-radius: 100%;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+}
+
+.slider-content {
+	position: relative;
+
+	.poster > img {
+		display: block;
+	}
+
+	span.location {
+		position: absolute;
+		top: 16px;
+		left: 16px;
+		border-radius: var(--radius-borderRadiusMD, 12px);
+		background: #fff;
+		padding: 8px;
+	}
+
+	.content {
+		display: flex;
+		@include property(padding, 32px);
+		@include property(gap, 32px);
+		background: #fff;
+
+		@media (max-width: 768px) {
+			flex-direction: column;
+			padding: 12px;
+			padding-top: 64px;
+		}
+
+		.left {
+			display: flex;
+			flex-direction: column;
+			align-items: start;
+			justify-content: center;
+			gap: 0.5em;
+			width: 70%;
+
+			@media (max-width: 768px) {
+				width: 100%;
+			}
+
+			> * {
+				text-align: start;
+			}
+		}
+
+		.right {
+			display: flex;
+			flex-direction: column;
+			width: 30%;
+			border-radius: var(--radius-border_Radius_XS, 8px);
+			background: #fff;
+			box-shadow: 0px 16px 40px 0px rgba(20, 20, 22, 0.1);
+
+			@media (max-width: 768px) {
+				width: 100%;
+			}
+
+			.icons-column {
+				padding: 1em;
+				display: flex;
+				flex-direction: column;
+				@include property(gap, 28px);
+				> div {
+					display: flex;
+					gap: 14px;
+					align-items: center;
+
+					.icon {
+						flex-shrink: 0;
+						width: 42px;
+						aspect-ratio: 1;
+					}
+
+					p {
+						text-align: left;
+					}
+				}
+			}
+		}
+	}
+
+	ul.card-grid {
+		margin-top: 1.75em !important;
+
+		.card-item > * {
+			text-align: left !important;
+		}
+	}
+}
+
+button.slider-nav-btn {
+	border: none;
+	@include property(width, 48px);
+	aspect-ratio: 1;
+	display: flex;
+	position: absolute;
+	top: 25%;
+	transform: translateY(-50%);
+	align-items: center;
+	justify-content: center;
+	border-radius: var(--radius-borderRadiusBase, 6px);
+	background: var(--Base-color_Base_Light, #fff);
+	cursor: pointer;
+	box-shadow: 0px 16px 40px 0px rgba(20, 20, 22, 0.1);
+
+	@media (max-width: 768px) {
+		display: none;
+	}
+
+	svg path {
+		transition: all 500ms ease;
+	}
+
+	&:hover {
+		svg path {
+			stroke: #0e2855;
+		}
+	}
+
+	&:active {
+		svg path {
+			stroke: #d8242a;
+		}
+	}
+}
+
+button.slider-nav-btn.slider-nav-btn-prev {
+	left: -72px;
+}
+
+button.slider-nav-btn.slider-nav-btn-next {
+	right: -72px;
 }

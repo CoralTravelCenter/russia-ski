@@ -1,8 +1,8 @@
-@import "../global-variables";
-@import "sunmar-variables";
-@import "../regular-mixins";
-@import "sunmar-fluid-mixins";
-@import "../layout";
+@import '../global-variables';
+@import 'sunmar-variables';
+@import '../regular-mixins';
+@import 'sunmar-fluid-mixins';
+@import '../layout';
 
 section.hero > article {
 	font-family: inherit;
@@ -17,7 +17,7 @@ section.hero > article {
 		}
 
 		> *:nth-child(n + 2) {
-			@include fontAndProperty($font_Size_Body, margin-top, 20px);
+			@include property(margin-top, 20px);
 		}
 
 		display: flex;

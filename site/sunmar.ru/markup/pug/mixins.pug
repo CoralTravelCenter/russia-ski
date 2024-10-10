@@ -3,19 +3,64 @@ mixin tab-navigation(data)
 		each item, idx in data
 			button.tab-navigation-btn(class=(idx === 0 ? 'js-active' : ''))=item.region_name
 
+mixin slider-nav-btns()
+	button.slider-nav-btn.slider-nav-btn-prev
+		svg(xmlns="http://www.w3.org/2000/svg", width="20", height="14", viewBox="0 0 20 14", fill="none")
+			path(d="M7.33334 2.20313L2 7.45313M2 7.45313L7.33334 12.7031M2 7.45313L18 7.45313", stroke="#656565", stroke-width="1.5", stroke-linecap="round", stroke-linejoin="round")
+	button.slider-nav-btn.slider-nav-btn-next
+		svg(xmlns="http://www.w3.org/2000/svg", width="20", height="14", viewBox="0 0 20 14", fill="none")
+			path(d="M12.6667 11.7969L18 6.54687M18 6.54687L12.6667 1.29688M18 6.54687H2", stroke="#656565", stroke-width="1.5", stroke-linecap="round", stroke-linejoin="round")
+
+mixin card-grid(data)
+	h3='Горнолыжные комплексы курорта'
+	ul.card-grid 
+		each item in data
+			li.card-item
+				.picture
+					img(src=item.img !== '' && item.img)
+				h3= item.headline
+				p= item.text
+
+mixin slider-content(data)
+	.slider-content
+		span.location=data.location
+		picture.poster
+			source(media="(max-width: 768px)" width="356" height="260" srcset="#")
+			img(width="1360" height="300" src=data.img !== '' && data.img)
+		.content
+			.left
+				h3=data.headline
+				p
+					strong=data.season
+				p=data.text
+			.right
+				.icons-column
+					if (data.benefits)
+						each icon in data.benefits
+							div
+								.icon 
+									img(src=icon.icon !== '' && icon.icon)
+								p=icon.text
+		if (data.card_grid)
+			+card-grid(data.card_grid)
 
 mixin tab-content(data)
-	if (data.slider)
+	if data.slider
 		-const slider = data.slider;
-		swiper-container
+		swiper-container(
+				navigation={
+				nextEl: '.slider-nav-btn-next',
+				prevEl: '.slider-nav-btn-prev'}
+				pagination=true
+				autoHeight=true
+				loop=true
+			)
 			each slide in slider
 				swiper-slide
-					span.location=slide.location
-					picture.poster
-						source(media="(max-width: 768px)" width="356" height="260" srcset="#")
-						img(width="1360" height="300" src='#')
-					
-
+					+slider-content(slide)
+		+slider-nav-btns()
+	else 
+		+slider-content(data) 
 
 mixin content(data)
 	-const tabs = data;

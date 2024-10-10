@@ -10,5 +10,6 @@
 		'/site/sunmar.ru/markup/hero-text.html',
 		'/site/sunmar.ru/markup/benefits.html',
 		'/site/sunmar.ru/markup/pug/tabs.pug',
+		'/site/sunmar.ru/markup/contacts.html',
 	],
 }

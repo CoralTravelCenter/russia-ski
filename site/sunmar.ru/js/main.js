@@ -1,10 +1,7 @@
-import {
-	hostReactAppReady,
-	vimeoAutoPlay,
-	setH1UnderKV,
-} from "../../common/js/utils";
+import { hostReactAppReady } from '../../common/js/utils'
 
 hostReactAppReady().then(() => {
-	vimeoAutoPlay();
-	setH1UnderKV();
-});
+	$('.disclosable .toggler').on('click', function () {
+		return $(this).toggleClass('open')
+	})
+})

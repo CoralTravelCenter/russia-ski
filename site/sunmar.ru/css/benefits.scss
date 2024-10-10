@@ -6,7 +6,7 @@ section.benefits > article .contenu {
 		@include flex-grid(1em, 6, center);
 
 		@media (max-width: 768px) {
-			@include flex-grid(1em, 1, center);
+			@include flex-grid(1em, 2, center);
 		}
 
 		.benefit {
